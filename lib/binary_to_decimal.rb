@@ -7,10 +7,12 @@
 def binary_to_decimal(binary_array)
   i = binary_array.length - 1
   num = 0
+  position = 0
 
-  binary_array.each do |bit|
-    num += bit * 2 ** i
+  until position == binary_array.length
+    num += binary_array[position] * 2 ** i
     i -= 1
+    position += 1
   end
   return num
 end
