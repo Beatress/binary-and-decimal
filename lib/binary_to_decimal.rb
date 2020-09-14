@@ -18,11 +18,27 @@ def binary_to_decimal(binary_array)
 end
 
 def decimal_to_binary(num)
-  binary = []
+  return nil if num < 0 # Negative numbers not supported yet
+  return [0] if num == 0
+  length = 0
+  length += 1 until 2 ** length > num
+  # puts "The most significant digit will be #{2 ** (length - 1)} for an array length of #{length}"
+  binary = Array.new(length, 0)
+  index = length - 1 # Traverse backwards through the array
   until num == 0
-    binary << (num % 2)
+    binary[index] = (num % 2)
     num /= 2
+    index -= 1
   end
 
-  return binary.reverse
+  return binary
+
+  #### Really slick way to implement this if built in methods (.reverse) is allowed
+  # binary = []
+  # until num == 0
+  #   binary << (num % 2)
+  #   num /= 2
+  # end
+  #
+  # return binary.reverse
 end
